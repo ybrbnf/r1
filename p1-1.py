@@ -1,26 +1,24 @@
 #!/usr/bin/python
+
+from math import sqrt
 def multipliers(n): #1.a
- spisok=''
- b=n
- while n>=2:
-  for i in range(2,n):                 
-         if n%i==0:
-             break                            
-  else:                                    
-     while b%n==0:
-         spisok=spisok+str(n)+' '
-         b=b/n
-  n=n-1    
- return spisok
+ a=int(sqrt(n))
+ b=[]
+ for i in range (1, a):
+     if (n%i)==0:
+         b.append(i)
+         n=(n//i)
+ return b
+
 def equation(a,b,c): #1.b
- from math import sqrt
- D=0
+ d=0
  i=1
- D=b**2-4*a*c
+ d=b**2-4*a*c
  if D<0:
      return 'deistvitelnyh korney net'
  else:
-     return 'korni=',round((-b+sqrt(D))/2*a, 2),';', round((-b-sqrt(D))/2*a, 2)
+     return round((-b+sqrt(d))/2*a, 2), round((-b-sqrt(d))/2*a, 2)
+
 def simple(a): #1.c
  x=0
  for i in range(1, a):
@@ -30,6 +28,7 @@ def simple(a): #1.c
      return a, 'isnt simple'
  else:
      return a,'is simple'
+
 def atm(c): #1.d
  b=0
  i=0
