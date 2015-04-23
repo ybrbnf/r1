@@ -14,7 +14,7 @@ def equation(a,b,c): #1.b
  d=0
  i=1
  d=b**2-4*a*c
- if D<0:
+ if d<0:
      return 'deistvitelnyh korney net'
  else:
      return round((-b+sqrt(d))/2*a, 2), round((-b-sqrt(d))/2*a, 2)
