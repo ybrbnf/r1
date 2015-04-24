@@ -1,35 +1,38 @@
 #!/usr/bin/python
 #1-3-1
-def l1(lst):
+def l1(lst_in):
  print '-----------------1-3-1----------' 
- for i in lst:
-     elem=lst.count(i)
-     if elem>=2:
-         return i
-     #1-3-2
+ lst_out=[]
+ lst_x=[]
+ for elem in lst_in: 
+     counter=lst_in.count(elem)
+     if counter>=2:
+         lst_x.append(elem)
+ for elem in lst_x:
+    if elem not in lst_out:
+        lst_out.append(elem)
+ return lst_out
+#1-3-2
 def l2(*arg):
  print '-----------------1-3-2----------'
- ind_int=ind_lst=ind_str=0
+ lst_out=[]
+ lst=[]
  for j in arg:
-      if type(j)==str:
-          ind_str+=1
-      elif type(j)==int:
-          ind_int+=1
-      elif type(j)==list:
-          ind_lst+=1
- return 'string -> {}'.format(ind_str), 'integer -> {}'.format(ind_int), 'list -> {}'.format(ind_lst)
+    lst_out.append(type(j))    
+    count_arg=lst_out.count(type(j))
+    type_arg=type(j)
+    print a, type_arg,'=>',count_arg
+ return lst
 #1-3-3
+def last_chars (*arg):
+ for word in arg:
+  return word[len(word)-1:]
 def l3(*arg):
  print '-----------------1-3-3----------'
- lst_x=[]
  lst_out=[]
- for i in arg:
-     i=i[::-1]
-     lst_x.append(i)
- lst_x.sort()
- for i in lst_x:
-     i=i[::-1]
-     lst_out.append(i)
+ for word in arg:
+    lst_out.append(word)
+ lst_out.sort(key=last_chars)
  return lst_out
 #1-3-4
 def l4(lst,string):
@@ -74,9 +77,9 @@ def l7(lst_in):
          if count==count_max:
              return lst_in[i-count_max+1:i+1]
      else: count=1 
-print l1(['aso','liy','aso','gug','sdolf'])
-print l2('asa', 4, ['gu sdb'], 'olfc')
-print l3('asa', 'rliyd', 'gusdb', 'olfc')
+print l1(['aso','liy','aso','gug','sdolf','liy'])
+print l2(('sdgfd','asdfs'),'asa', 4, ['gu sdb'], {1:1, 2:2}, ('sdgfd','asdfs'))
+print l3('klsdhgfkz','asa','rliyd','gusdb','olfc')
 print l4(['alfa','delta','yota'],'beta')
 print l5(['asa','liyg','rrrr','gusdy'],['olfd','ldks','hrfkjhc'],'rrrr')
 print s6('jkdlj kjfh zlkhf lfoelc')
