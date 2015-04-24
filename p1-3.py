@@ -21,7 +21,7 @@ def l2(*arg):
     lst_out.append(type(j))    
     count_arg=lst_out.count(type(j))
     type_arg=type(j)
-    print a, type_arg,'=>',count_arg
+    print type_arg,'=>',count_arg
  return lst
 #1-3-3
 def last_chars (*arg):
