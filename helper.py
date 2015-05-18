@@ -1,4 +1,4 @@
-#!usr/bin/python
+#!/usr/bin/python
 #coding: utf-8
 import argparse
 import os
@@ -28,3 +28,5 @@ elif args.version:
     print 'Версия итерпритатора Python: {}'.format(version)
 elif args.login:
     print 'Текущий пользователь: {}'.format (login)
+else:
+    parser.print_help()
