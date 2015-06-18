@@ -7,7 +7,7 @@ class Tree:
         self.space=space
 
     def __str__(self):
-        return str(self.tag1)
+        return str(self.data)
 
 in_file='in.txt'#исходный файл
 out_file='out.html'#конечный файл
@@ -20,25 +20,31 @@ with open(in_file, 'r') as read_file:# пишем теги из файла в с
         open_tags.append(line.strip('\n'))
         tmp.append('/'+line.strip('\n'))
 close_tags=tmp[::-1]
+out_file=open('out.html', 'w')
 for element in open_tags:
     if counter==0:
         space=0
-        root=Tree(line,None,space)
+        root=Tree(element,None,space)
+        out_file.write (' '*space+'<{}>\n'.format(element))
         counter+=1
-        print '<'+str(element)+'>'
+        
     elif counter!=0:
         space=counter
-        node=Tree(line,root,space)
+        node=Tree(element,root,space)
+        out_file.write (' '*space+'<{}>\n'.format(element))
         counter+=1
-        print ' '*space+'<'+str(element)+'>'
 counter=0
 for element in close_tags:
     if counter==0:
-        root=Tree(line,None,space)
+        root=Tree(element,None,space)
+        out_file.write (' '*space+'<{}>\n'.format(element))
         counter+=1
-        print ' '*space+'<'+str(element)+'>'
+        
     elif counter!=0:
-        space=space-counter
-        node=Tree(line,root,space)
+        node=Tree(element,root,space)
+        out_file.write (' '*space+'<{}>\n'.format(element))
         counter+=1
-        print ' '*space+'<'+str(element)+'>'
+        space=space-counter
+        
+
+out_file.close()
